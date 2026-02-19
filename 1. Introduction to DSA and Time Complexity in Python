@@ -2,15 +2,18 @@
 # TIME COMPLEXITY - DSA DAY 1 NOTES
 # =====================================================
 
-# TIMESTAMP REFERENCES
-# 18:54 - Comparison in terms of n(input size)
-# 19:42 - Mathematical equation of code
+
 # 27:39 - Types of analysis
-# 35:07 - Constant time
-# 39:01 - Linear time
-# 49:44 - Quadratic time
-# 57:43 - Cubic time
-# 1:03:00 - Logarithmic time
+Time complexity analysis can be done in THREE different ways:
+1. BEST CASE (Omega - Ω)
+2. AVERAGE CASE (Theta - Θ)  
+3. WORST CASE (Big O - O)
+
+# 35:07 - Constant time = N=5
+# 39:01 - Linear time  == 2X+7  == 1 FOR LOOP + 1FOR  + 1 WHILE SEPARATELY
+# 49:44 - Quadratic time     == SQUARE   == FOR * FOR  (1 FOR DEPEND ON ANOTHER FOR LOOP )
+# 57:43 - Cubic time     == CUBE       ==  FOR * FOR * FOR 
+# 1:03:00 - Logarithmic time  == LOG(N)  == ANY OF 2 LOOP WITH n VALUE DOUBLED EACH TIME OR HALVED EACH TIME
 
 # =====================================================
 # COMPLEXITY RULES (n = input size)
@@ -22,6 +25,8 @@ x = 5 + 3          # addition
 y = x * 2          # multiplication
 z = x > y          # comparison
 print(z)           # output
+
+
 
 # 2. SINGLE LOOP → O(n)
 for i in range(n):     # runs n times
@@ -35,6 +40,10 @@ for j in range(n):     # second loop: O(n)
     print(j)
 # Total: O(n) + O(n) = O(2n) → O(n)
 
+
+
+
+
 # 4. NESTED LOOPS → MULTIPLY COMPLEXITIES
 # O(n²) - Quadratic
 for i in range(n):          # outer: n times
@@ -46,11 +55,20 @@ for i in range(n):          # outer: n times
     for j in range(m):      # inner: m times
         print(i, j)         # n × m operations
 
+
+
+
+
+
 # O(n³) - Cubic (three nested loops)
 for i in range(n):
     for j in range(n):
         for k in range(n):
             print(i, j, k)  # n × n × n = n³ operations
+
+
+
+
 
 # 5. LOOP THAT DOUBLES/HALVES → O(log n)
 # Halving (like binary search)
@@ -134,330 +152,167 @@ Doubling each step        O(log n)      while i < n: i*=2
 """
 
 ============ SAME NOTES LIKE ABOVE JUST HAVE ADDITION OF INTERVIEW QUESTION ASKED ON IT AS PER TOPIC BELOW================================================
+# =====================================================
+# DSA TIME COMPLEXITY - QUICK INTERVIEW REVISION NOTES
+# =====================================================
+# Use these as a quick refresher before interviews
+# =====================================================
 
 # =====================================================
-# TIME COMPLEXITY - DSA DAY 1 (COMBINED NOTES)
-# =====================================================
-
-# =====================================================
-# TIMESTAMP REFERENCES
-# =====================================================
-# 18:54 - Comparison in terms of n (input size)
-# 19:42 - Mathematical equation of code
-# 27:39 - Types of analysis
-# 35:07 - Constant time
-# 39:01 - Linear time
-# 49:44 - Quadratic time
-# 57:43 - Cubic time
-# 1:03:00 - Logarithmic time
-
-# =====================================================
-# COMPLEXITY RULES (n = input size)
+# DEFINITIONS & INTERVIEW QUESTIONS
 # =====================================================
 
 """
-BASIC RULES:
-• Simple operations → O(1)           # Single operations
-• One loop over n → O(n)              # Linear traversal  
-• Two loops in sequence → O(n)        # Add: O(n + n) = O(n)
-• Nested loops → multiply complexities # O(n²), O(n³), O(nm)
-• Loop doubles/halves → O(log n)      # Each step reduces by half/double
-• Drop constants: O(2n) → O(n)        # Constants don't matter
-• Keep dominant term: O(n² + n) → O(n²) # Highest order wins
+Q1: What is Time Complexity?
+A: Time complexity is a way to represent how the runtime of an algorithm 
+   grows as the input size (n) increases. It helps compare algorithm efficiency.
+
+Q2: What are the three types of analysis?
+A: 1. BEST CASE (Ω - Omega): Minimum time needed
+   2. AVERAGE CASE (Θ - Theta): Expected time for random input
+   3. WORST CASE (O - Big O): Maximum time needed (most commonly used)
+
+Q3: Why do we focus on Worst Case (Big O)?
+A: Because it provides a guaranteed upper bound on performance,
+   helps in capacity planning, and ensures algorithm works under all conditions.
+
+Q4: What is Constant Time - O(1)?
+A: Operations that take the same time regardless of input size.
+   Examples: arithmetic (5+3), comparisons (x>y), array access by index.
+   Like: N = 5 → always 5 operations, N = 1M → still same time.
+
+Q5: What is Linear Time - O(n)?
+A: Runtime grows proportionally to input size. If n doubles, time doubles.
+   Examples: Single loop, sequential loops, linear search.
+   Like: 2x + 7 operations → still O(n)
+
+Q6: What is Quadratic Time - O(n²)?
+A: Runtime grows as square of input size. If n doubles, time quadruples.
+   Examples: Nested loops (for * for), bubble sort, finding all pairs.
+   Like: One FOR loop depending on another FOR loop
+
+Q7: What is Cubic Time - O(n³)?
+A: Runtime grows as cube of input size. If n doubles, time increases 8x.
+   Examples: Three nested loops (for * for * for), matrix multiplication.
+   Like: Triple nested loops
+
+Q8: What is Logarithmic Time - O(log n)?
+A: Runtime grows logarithmically. If n doubles, time increases by just 1.
+   Examples: Binary search, loops where value doubles or halves each time.
+   Like: While loop with n //= 2 or n *= 2 each step
+
+Q9: What is the growth order of complexities?
+A: From fastest to slowest:
+   O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(n³) < O(2ⁿ) < O(n!)
+
+Q10: For n=10, how do different complexities compare?
+A: O(1) = 1 operation
+   O(log n) = ~3 operations
+   O(n) = 10 operations
+   O(n log n) = 33 operations
+   O(n²) = 100 operations
+   O(n³) = 1000 operations
+
+Q11: What is Space Complexity?
+A: How much extra memory an algorithm needs as input grows.
+   Example: Creating new array of size n → O(n) space
+   Using single variable → O(1) space
+
+Q12: Why do we drop constants in Big O?
+A: Because we care about growth rate, not exact operations.
+   O(2n) → O(n), O(100) → O(1), O(5n²) → O(n²)
+
+Q13: Why do we keep only dominant terms?
+A: Largest term dominates growth for large inputs.
+   O(n² + n) → O(n²), O(n³ + n²) → O(n³)
+
+Q14: How to identify O(log n) in code?
+A: Look for loops where the value doubles (i *= 2) or halves (i //= 2)
+   while i > 1: i = i // 2
+   while i < n: i = i * 2
+
+Q15: How to identify O(n²) in code?
+A: Look for nested loops where both loops run approximately n times
+   for i in range(n):
+       for j in range(n):
+           # n² operations
+
+Q16: What's the difference between O(nm) and O(n²)?
+A: O(nm): Different dimensions (matrix n×m)
+   O(n²): Same dimension (square matrix)
 """
 
 # =====================================================
-# 1. CONSTANT TIME - O(1)
+# QUICK IDENTIFICATION CHEAT SHEET
 # =====================================================
 """
-DEFINITION: Runtime stays same regardless of input size
-EXAMPLES: Arithmetic, comparisons, array access by index
-"""
-
-# CODE EXAMPLES
-x = 5 + 3                    # addition
-y = x * 2                    # multiplication  
-z = x > y                    # comparison
-print(z)                     # output
-
-def constant_time(arr):
-    return arr[0]            # always 1 operation
-
-# INTERVIEW QUESTIONS:
-"""
-Q1: Which is faster: O(1) or O(log n)?
-A1: O(1) is faster as it takes same time regardless of input
-
-Q2: Give 3 examples of O(1) operations
-A2: Array indexing, arithmetic operations, variable assignment
-"""
-
-# =====================================================
-# 2. LINEAR TIME - O(n)
-# =====================================================
-"""
-DEFINITION: Runtime grows proportionally to input size
-If n doubles, time doubles
-"""
-
-# Single loop
-for i in range(n):           # runs n times
-    print(i)                 # O(1) operation
-# Total: O(n)
-
-# Two separate loops - still O(n)
-for i in range(n):           # first loop: O(n)
-    print(i)
-for j in range(n):           # second loop: O(n) 
-    print(j)
-# Total: O(n) + O(n) = O(2n) → O(n)
-
-def linear_time(arr):
-    total = 0
-    for item in arr:         # n operations
-        total += item
-    return total
-
-# INTERVIEW QUESTIONS:
-"""
-Q1: What's complexity of two separate loops over same array?
-A1: O(n) because we add then drop constants: O(2n) → O(n)
-
-Q2: Implement linear search and its complexity
-A2: O(n) - must check each element in worst case
-"""
-
-# =====================================================
-# 3. QUADRATIC TIME - O(n²)
-# =====================================================
-"""
-DEFINITION: Runtime grows as square of input size
-If n doubles, time quadruples
-Caused by nested loops
-"""
-
-# O(n²) - Same dimensions
-for i in range(n):           # outer: n times
-    for j in range(n):       # inner: n times
-        print(i, j)          # n × n = n² operations
-
-# O(nm) - Different dimensions  
-for i in range(n):           # outer: n times
-    for j in range(m):       # inner: m times
-        print(i, j)          # n × m operations
-
-def quadratic_time(arr):
-    pairs = []
-    for i in arr:            # n times
-        for j in arr:        # n times
-            pairs.append((i, j))
-    return pairs             # n² pairs
-
-# INTERVIEW QUESTIONS:
-"""
-Q1: Write bubble sort complexity
-A1: O(n²) due to nested loops comparing adjacent elements
-
-Q2: Why is O(n²) bad for large inputs?
-A2: n=10,000 gives 100 million operations - very slow
-"""
-
-# =====================================================
-# 4. CUBIC TIME - O(n³)
-# =====================================================
-"""
-DEFINITION: Runtime grows as cube of input size
-If n doubles, time increases 8x
-Three nested loops
-"""
-
+CODE PATTERN                    COMPLEXITY    HOW TO IDENTIFY
+───────────────────────────────────────────────────────────────
+x = 5 + 3                       O(1)          Simple operation
+for i in range(n): print(i)     O(n)          Single loop
+loop1 + loop2 separately        O(n)          Sequential (add then drop)
+for i in range(n):              
+    for j in range(n):           O(n²)        Nested loops (multiply)
+for i in range(n):
+    for j in range(m):           O(nm)        Different dimensions
 for i in range(n):
     for j in range(n):
-        for k in range(n):
-            print(i, j, k)  # n × n × n = n³ operations
-
-def cubic_time(arr):
-    triplets = []
-    for i in arr:            # n times
-        for j in arr:        # n times
-            for k in arr:    # n times
-                triplets.append((i, j, k))
-    return triplets          # n³ triplets
-
-# INTERVIEW QUESTIONS:
-"""
-Q1: When n=1000, how many ops in O(n³)?
-A1: 1,000,000,000 (1 billion) operations
+        for k in range(n):       O(n³)        Triple nested
+while n > 1: n //= 2             O(log n)     Halving each step
+while i < n: i *= 2              O(log n)     Doubling each step
 """
 
 # =====================================================
-# 5. LOGARITHMIC TIME - O(log n)
+# COMMON ALGORITHM COMPLEXITIES
 # =====================================================
 """
-DEFINITION: Runtime grows logarithmically with input
-If n doubles, time increases by 1
-Each step reduces problem size by half/double
-"""
-
-# Halving (like binary search)
-i = n
-while i > 1:
-    i = i // 2               # halves each step
-    print(i)                 # runs log₂(n) times
-
-# Doubling  
-i = 1
-while i < n:
-    i = i * 2                # doubles each step
-    print(i)                 # runs log₂(n) times
-
-def logarithmic_time(n):
-    steps = 0
-    while n > 1:
-        n = n // 2           # halves each step
-        steps += 1
-    return steps             # log₂(n) steps
-
-# INTERVIEW QUESTIONS:
-"""
-Q1: Why is O(log n) faster than O(n)?
-A1: For n=1M, O(log n) takes ~20 steps while O(n) takes 1M steps
-
-Q2: Implement binary search complexity
-A2: O(log n) as array halves each step
+ALGORITHM           TIME COMPLEXITY    SPACE     BEST USE CASE
+────────────────────────────────────────────────────────────────
+Array access       O(1)                O(1)      Random access
+Linear search      O(n)                 O(1)      Unsorted small data
+Binary search      O(log n)             O(1)      Sorted data search
+Bubble sort        O(n²)                O(1)      Educational only
+Merge sort         O(n log n)           O(n)      General sorting
+Quick sort         O(n log n) avg       O(log n)  Fastest average
+Selection sort     O(n²)                O(1)      Small arrays
+Factorial (rec)    O(n)                 O(n)      Small n only
 """
 
 # =====================================================
-# COMPLEXITY GROWTH ORDER
+# RULES SUMMARY FOR QUICK RECALL
 # =====================================================
 """
-FASTEST → SLOWEST:
-O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(n³)
+RULE 1: Simple ops → O(1)
+RULE 2: Single loop over n → O(n)
+RULE 3: Sequential loops → add then take largest
+RULE 4: Nested loops → multiply complexities
+RULE 5: Halving/doubling → O(log n)
+RULE 6: Drop constants (2n → n)
+RULE 7: Keep highest order (n² + n → n²)
+"""
 
-VISUAL COMPARISON (n = 10):
-O(1):      1 operation
-O(log n):  ~3 operations (log₂10 ≈ 3.32)
-O(n):      10 operations
-O(n log n): 33 operations (10 × 3.32)
-O(n²):     100 operations
-O(n³):     1000 operations
+# =====================================================
+# 30-SECOND INTERVIEW CRASH COURSE
+# =====================================================
+"""
+TIME COMPLEXITY QUICK REFERENCE:
+
+O(1)     "Constant"    → One operation, always same time
+O(log n) "Logarithmic" → Cuts problem in half each step
+O(n)     "Linear"      → Processes each item once
+O(n²)    "Quadratic"   → Nested loops, processes pairs
+O(2ⁿ)    "Exponential" → Recursive, doubles each step
+
+TYPES OF ANALYSIS:
+Ω (Omega)   → Best case (minimum time)
+Θ (Theta)   → Average case (expected time)
+O (Big O)   → Worst case (maximum time) ← FOCUS HERE
+
+GROWTH ORDER (fast → slow):
+O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)
 
 For n = 1,000,000:
-O(log n):  ~20 operations
-O(n):      1,000,000 operations
-O(n²):     1,000,000,000,000 operations
-"""
-
-# =====================================================
-# QUICK REFERENCE TABLE
-# =====================================================
-"""
-CODE PATTERN              COMPLEXITY    REAL-WORLD EXAMPLE
-────────────────────────────────────────────────────────────
-Single operation          O(1)          Access array[5]
-Single loop               O(n)          Find max in array
-Two separate loops        O(n)          Two independent scans
-Nested loops (same n)     O(n²)         Find duplicate pairs
-Nested loops (diff sizes) O(nm)         Matrix of n×m
-Halving each step         O(log n)      Binary search
-Doubling each step        O(log n)      Find power of 2
-Recursion (single)        O(n)          Factorial
-"""
-
-# =====================================================
-# IMPORTANT CONCEPTS
-# =====================================================
-
-# 1. SPACE COMPLEXITY
-"""
-Time Complexity  = How execution time grows with input
-Space Complexity = How memory usage grows with input
-
-Example: Creating new array of size n → O(n) space
-Example: Using single variable → O(1) space
-"""
-
-# 2. BEST/AVERAGE/WORST CASE
-"""
-- Best Case (Ω): Minimum time needed
-  Example: First element found → Ω(1)
-  
-- Average Case (Θ): Expected time  
-  Example: Middle element found → Θ(n/2) → Θ(n)
-  
-- Worst Case (O): Maximum time needed
-  Example: Last element found → O(n)
-"""
-
-# 3. DROP CONSTANTS & NON-DOMINANT TERMS
-"""
-RULE 1 - Drop Constants:
-O(2n) → O(n)
-O(100) → O(1)
-O(5n²) → O(n²)
-
-RULE 2 - Keep Highest Order:
-O(n² + n) → O(n²)
-O(n³ + n²) → O(n³)
-O(5n³ + 10n² + 100n) → O(n³)
-"""
-
-# 4. RECURSION COMPLEXITY
-def factorial(n):
-    if n <= 1: 
-        return 1
-    return n * factorial(n-1)  
-    # Time: O(n) - makes n recursive calls
-    # Space: O(n) - call stack stores n frames
-
-# =====================================================
-# QUICK IDENTIFICATION GUIDE
-# =====================================================
-"""
-SEE THIS CODE            →    COMPLEXITY
-────────────────────────────────────────────
-if, else, basic math     →    O(1)
-for i in range(n)        →    O(n)
-for i in range(n):       
-    for j in range(n)    →    O(n²)
-while n > 1: n //= 2     →    O(log n)
-for i in range(n):
-    j = n
-    while j > 1: j//=2   →    O(n log n)
-fib(n) recursion         →    O(2ⁿ)
-"""
-
-# =====================================================
-# PRACTICE QUESTIONS
-# =====================================================
-"""
-BEGINNER:
-1. What is O(100n + 1000) after simplification? → O(n)
-2. Which is faster: O(log n) or O(√n)? → O(log n)
-3. How many steps for binary search with n=64? → 6 steps
-
-INTERMEDIATE:
-4. Analyze: for i in range(n):
-              for j in range(i, n):
-                 print(i,j)  # Still O(n²)
-5. What's space complexity of recursive binary search? → O(log n)
-
-ADVANCED:
-6. Compare: O(2ⁿ) vs O(n!) for n=10
-   O(2¹⁰) = 1024 operations
-   O(10!) = 3,628,800 operations
-   So O(2ⁿ) is faster
-"""
-
-# =====================================================
-# KEY TAKEAWAYS
-# =====================================================
-"""
-1️⃣ Always analyze worst-case complexity first
-2️⃣ Look for loops to determine complexity
-3️⃣ Nested loops multiply, sequential loops add
-4️⃣ Halving/doubling indicates O(log n)
-5️⃣ Drop constants and keep highest order
-6️⃣ Time vs Space often have trade-offs
-7️⃣ Practice by analyzing code you write daily
+O(log n) → 20 steps
+O(n)     → 1,000,000 steps
+O(n²)    → 1,000,000,000,000 steps
 """
