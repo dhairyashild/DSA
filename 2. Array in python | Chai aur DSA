@@ -1,32 +1,44 @@
 # =====================================================
 # ARRAYS in DSA - PYTHON SHORT NOTES (array module)
 # =====================================================
+
+
 # 90% DSA touches arrays (two-pointer, stacks, etc.)
 # Python: Use 'array' module (typed, efficient) or NumPy (multi-dim)
 
 # 1. IMPORT OPTIONS (best → worst)
-from array import *      # Direct: array('i', [...])
+from array import *      # Direct: array('i', [list])
 # import array            # array.array('i', [...])       ==  2 times need to write array so not used in prod
 # import array as arr     # arr.array('i', [...])         == alais arr need to write everytime arr
 
-# 2. TYPECODES (homogeneous only!)
+
+
+# 2. TYPECODES (homogeneous only need to give typecode type which format of data we adding)
+
 # 'i'/int(2B) 'l'/long(4B) 'f'/float(4B) 'd'/double(8B) 'u'/unicode
 arr = array('i', [1,2,3,4,5,6])  # Integer array
 
+
 # 3. BASIC OPS
-print(arr)               # array('i', [1,2,3,4,5,6])
-print(len(arr))          # 6 (dynamic!)
+print(arr)               # array('i', [1,2,3,4,5,6])    === array('typecode', [data])
+print(len(arr))          # 6
 print(arr.typecode)      # 'i'
-print(arr[0])            # 1 (O(1) access)
-arr[2] = 200             # Update/override
+print(arr[0])            # 1             
+
+
 
 # 4. PRINTING LOOPS
-for i in range(len(arr)): print(arr[i], end=' ')     # Indexed: 1 2 200 4 5 6
+for i in range(len(arr)):
+        print(arr[i], end=' ')                       # Indexed: 1 2 200 4 5 6
+
 for x in arr: print(x, end=', ')                     # Enhanced: 1, 2, 200, 4, 5, 6,
 
+
+
 # 5. MODIFY (Insert/Append/Update)
+arr.append(100)          # [1,50,2,200,4,5,6,100] (end)        vs     arr.pop()                # Remove last → [100,6,5,4,200,2,50]
 arr.insert(1, 50)        # [1,50,2,200,4,5,6] (shifts right)
-arr.append(100)          # [1,50,2,200,4,5,6,100] (end)
+arr[2] = 200             # Update/override
 arr.reverse()            # [100,6,5,4,200,2,50,1]
 
 # 6. DELETE (Pop)
@@ -34,7 +46,7 @@ arr.pop()                # Remove last → [100,6,5,4,200,2,50]
 arr.pop(2)               # Remove index 2 → [100,6,4,200,2,50]
 
 # 7. COPY NEW ARRAY (with ops!)
-copy_arr = array(arr.typecode, [x*3 for x in arr])  # New array, tripled
+copy_arr = array(arr.typecode, [x*3 for x in arr])  # New array, tripled      if u dont want trippeled arraynremove *3 so same array copied
 # print(copy_arr) → array('i', [300,18,12,600,6,150])
 
 # 8. ERRORS TO AVOID
@@ -52,7 +64,7 @@ copy_arr = array(arr.typecode, [x*3 for x in arr])  # New array, tripled
 from array import *
 
 # 1. CREATION + TYPECODES (homogeneous only!)
-# 'i'=int(2B), 'l'=long(4B), 'f'=float(4B), 'd'=double(8B), 'u'=unicode
+# 'i'=int(2B), 'f'=float(4B), 'd'=double(8B), 'u'=unicode, 'l'=long(4B)
 vals = array('i', [1, 2, 3, 4, 5])      # Integer array
 # vals = array('d', [1.5, 2.3, 3.7])    # Float array (use 'd'/'f')
 print(vals)         # array('i', [1, 2, 3, 4, 5])
