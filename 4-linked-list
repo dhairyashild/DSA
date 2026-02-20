@@ -1,0 +1,140 @@
+# =====================================================
+# LINKED LIST - COMPLETE INTERVIEW GUIDE (Q&A + CODE)
+# =====================================================
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# =====================================================
+# Q1: CREATE + PRINT Linked List
+def create_print():
+    n1, n2, n3 = Node(10), Node(20), Node(30)
+    n1.next, n2.next = n2, n3
+    curr = n1
+    while curr:
+        print(curr.data, end="→")
+        curr = curr.next
+    print("None")
+# 10→20→30→None
+
+# =====================================================
+# Q2: INSERT HEAD (O(1))
+def insert_head(head, data):
+    new = Node(data)
+    new.next = head
+    return new
+
+# =====================================================
+# Q3: INSERT END (O(n))
+def insert_end(head, data):
+    new = Node(data)
+    if not head: return new
+    curr = head
+    while curr.next: curr = curr.next
+    curr.next = new
+    return head
+
+# =====================================================
+# Q4: INSERT POSITION k
+def insert_pos(head, pos, data):
+    new = Node(data)
+    if pos == 0: return insert_head(head, data)
+    curr = head
+    for i in range(pos-1):
+        if curr.next: curr = curr.next
+        else: return head
+    new.next = curr.next
+    curr.next = new
+    return head
+
+# =====================================================
+# Q5: DELETE VALUE (O(n))
+def delete_val(head, data):
+    if head and head.data == data: return head.next
+    curr = head
+    while curr and curr.next:
+        if curr.next.data == data:
+            curr.next = curr.next.next
+            return head
+        curr = curr.next
+    return head
+
+# =====================================================
+# Q6: REVERSE (3 pointers O(n))
+def reverse(head):
+    prev, curr = None, head
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev, curr = curr, next_temp
+    return prev
+
+# =====================================================
+# Q7: MIDDLE NODE (Slow+Fast)
+def middle(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow.data
+
+# =====================================================
+# Q8: CYCLE DETECTION (Floyd)
+def has_cycle(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast: return True
+    return False
+
+# =====================================================
+# Q9: REMOVE Nth FROM END
+def remove_nth_end(head, n):
+    dummy = Node(0); dummy.next = head
+    left, right = dummy, head
+    for i in range(n): right = right.next
+    while right:
+        left, right = left.next, right.next
+    left.next = left.next.next
+    return dummy.next
+
+# =====================================================
+# Q10: Time Complexities
+"""
+Access:    O(n)
+Insert H:  O(1) 
+Insert E:  O(n)
+Delete H:  O(1)
+Delete A:  O(n)
+Space:     O(n)
+"""
+
+# =====================================================
+# Q11: Array vs Linked List
+"""
+Array:        Linked List:
+✅ O(1) access ❌ O(n) access
+❌ Slow insert ✅ Fast head insert
+❌ Fixed size  ✅ Dynamic size
+✅ Cache good  ❌ Cache miss
+"""
+
+# =====================================================
+# INTERVIEW CHEAT SHEET
+"""
+3 POINTERS: prev←curr→next_temp
+MIDDLE:     slow(1)+fast(2)
+CYCLE:      slow(1)+fast(2)  
+REVERSE:    curr.next=prev
+DUMMY:      Edge case fix
+PALINDROME: Rev 2nd half+compare
+"""
+
+# =====================================================
+# PRACTICE ORDER (90% Coverage):
+# 1️⃣ Insert/Delete/Reverse/Middle/Cycle
+# 2️⃣ Code each → Test edge cases (empty, 1 node)
+# 3️⃣ LeetCode: 206(Reverse), 141(Cycle), 876(Middle)
