@@ -1,0 +1,100 @@
+# =====================================================
+# ARRAYS in DSA - PYTHON SHORT NOTES (array module)
+# =====================================================
+# 90% DSA touches arrays (two-pointer, stacks, etc.)
+# Python: Use 'array' module (typed, efficient) or NumPy (multi-dim)
+
+# 1. IMPORT OPTIONS (best → worst)
+from array import *      # Direct: array('i', [...])
+# import array            # array.array('i', [...])
+# import array as arr     # arr.array('i', [...])
+
+# 2. TYPECODES (homogeneous only!)
+# 'i'/int(2B) 'l'/long(4B) 'f'/float(4B) 'd'/double(8B) 'u'/unicode
+arr = array('i', [1,2,3,4,5,6])  # Integer array
+
+# 3. BASIC OPS
+print(arr)               # array('i', [1,2,3,4,5,6])
+print(len(arr))          # 6 (dynamic!)
+print(arr.typecode)      # 'i'
+print(arr[0])            # 1 (O(1) access)
+arr[2] = 200             # Update/override
+
+# 4. PRINTING LOOPS
+for i in range(len(arr)): print(arr[i], end=' ')     # Indexed: 1 2 200 4 5 6
+for x in arr: print(x, end=', ')                     # Enhanced: 1, 2, 200, 4, 5, 6,
+
+# 5. MODIFY (Insert/Append/Update)
+arr.insert(1, 50)        # [1,50,2,200,4,5,6] (shifts right)
+arr.append(100)          # [1,50,2,200,4,5,6,100] (end)
+arr.reverse()            # [100,6,5,4,200,2,50,1]
+
+# 6. DELETE (Pop)
+arr.pop()                # Remove last → [100,6,5,4,200,2,50]
+arr.pop(2)               # Remove index 2 → [100,6,4,200,2,50]
+
+# 7. COPY NEW ARRAY (with ops!)
+copy_arr = array(arr.typecode, [x*3 for x in arr])  # New array, tripled
+# print(copy_arr) → array('i', [300,18,12,600,6,150])
+
+# 8. ERRORS TO AVOID
+# arr = array('i', [1,2,3.5])  # ERROR: float → int
+# Use 'f'/'d' for floats!
+
+# PRO TIP: Practice raw loops (no methods) + 5-10 LeetCode array Qs
+# Arrays → foundation for stacks/queues (90% DSA!)
+----------------------------------------------------------------------------------------------------------------------------
+
+# =====================================================
+# ARRAYS in DSA - PYTHON (array module) - COMPLETE NOTES
+# =====================================================
+# Foundation for 90% DSA: two-pointer, stacks, sliding window, etc.
+from array import *
+
+# 1. CREATION + TYPECODES (homogeneous only!)
+# 'i'=int(2B), 'l'=long(4B), 'f'=float(4B), 'd'=double(8B), 'u'=unicode
+vals = array('i', [1, 2, 3, 4, 5])      # Integer array
+# vals = array('d', [1.5, 2.3, 3.7])    # Float array (use 'd'/'f')
+print(vals)         # array('i', [1, 2, 3, 4, 5])
+print(len(vals))    # 5 (dynamic sizing!)
+
+# 2. ACCESS + UPDATE (O(1) - core DSA advantage)
+print(vals[0])      # 1 (0-indexed)
+vals[2] = 200       # Override: [1, 2, 200, 4, 5]
+print(vals.typecode) # 'i'
+
+# 3. PRINTING (2 ways - practice both for interviews)
+print("Indexed loop:")
+for i in range(len(vals)): print(vals[i], end=' ')  # 1 2 200 4 5
+print("\nEnhanced loop:")
+for x in vals: print(x, end=', ')                   # 1, 2, 200, 4, 5,
+
+# 4. MODIFY (Insert/Append/Update)
+vals.append(10)         # [1,2,200,4,5,10] - end
+vals.insert(1, 50)      # [1,50,2,200,4,5,10] - shifts right
+vals.reverse()          # [10,5,4,200,2,50,1]
+
+# 5. DELETE (Pop)
+vals.pop()              # Remove LAST: [10,5,4,200,2,50]
+vals.pop(2)             # Remove index 2: [10,5,200,2,50]
+
+# 6. COPY NEW ARRAY (with transformation!)
+copy_arr = array(vals.typecode, [x*3 for x in vals])
+# copy_arr: array('i', [30,15,600,6,150])
+
+# 7. ERROR HANDLING (common interview trap)
+# vals = array('i', [1,2,3.5])  # ERROR: float in int array!
+# Fix: Use 'd' for floats: array('d', [1,2,3.5])
+
+# =====================================================
+# SUMMARY - KEY POINTS (MEMORIZE FOR INTERVIEWS)
+# =====================================================
+# ✅ CONTIGUOUS memory = O(1) random access
+# ✅ 0-based INDEXING: vals[0] = first element
+# ✅ DYNAMIC sizing (Python advantage vs C++/Java)
+# ✅ TYPECODES mandatory ('i','d','f','u')
+# ✅ IMPORT: from array import * (fastest)
+# ✅ 90% DSA built on arrays (practice 10+ LeetCode problems)
+# ✅ NumPy better for multi-dim/performance
+
+# PRO TIP: Write RAW loops (no methods) for DSA mastery!
