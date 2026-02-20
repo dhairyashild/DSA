@@ -6,8 +6,8 @@
 
 # 1. IMPORT OPTIONS (best → worst)
 from array import *      # Direct: array('i', [...])
-# import array            # array.array('i', [...])
-# import array as arr     # arr.array('i', [...])
+# import array            # array.array('i', [...])       ==  2 times need to write array so not used in prod
+# import array as arr     # arr.array('i', [...])         == alais arr need to write everytime arr
 
 # 2. TYPECODES (homogeneous only!)
 # 'i'/int(2B) 'l'/long(4B) 'f'/float(4B) 'd'/double(8B) 'u'/unicode
