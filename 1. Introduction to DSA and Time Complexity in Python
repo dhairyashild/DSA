@@ -1,5 +1,25 @@
 # =====================================================
-# TIME COMPLEXITY - DSA DAY 1 NOTES
+# TIME COMPLEXITY - CODEBASICS VID 2 NOTES
+# =====================================================
+
+
+- Big O Notation==== Measures how TIME/SPACE grows as input size (n) increases.          -"O" means Order of growth.
+- RULES FOR BIG O ==
+time = 5n² + 3n + 20
+1. Keep FASTEST growing: n² (dominates for large n)
+2. Drop constants: 5n² → n²
+3. Drop lower terms: +3n + 20 → ignore
+
+Result: O(n²)
+
+
+
+
+
+
+
+# =====================================================
+# TIME COMPLEXITY - DSA DAY 1 NOTES for 
 # =====================================================
 
 
