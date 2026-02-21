@@ -156,7 +156,27 @@ class Stack():
         print(rev)
     
 o=Stack()
---------------------------------------------------
 
 o.revrse_string("abcdefg")
-        
+   --------------------------------------------------
+--------------------------------------------------
+     
+
+####  extra notes
+
+
+class Stack:
+    def __init__(self, lst):
+        # self.lst is the "Box" inside the object
+        # lst is the "Data" coming from outside
+        self.lst = lst 
+
+# Example:
+my_data = [1, 2, 3]
+o = Stack(my_data)
+
+
+- "self.lst" is the internal variable that stays with the object forever.
+- "lst" is just a temporary name for the data you passed into the ( ).
+- The "=" means "take the outside data (lst) and save it inside (self.lst)".
+- If you don't use "self.", the data disappears as soon as __init__ finishes.
