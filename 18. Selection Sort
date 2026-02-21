@@ -1,0 +1,30 @@
+# BUBBLE SORT vs SELECTION SORT - Interview Notes 🚀
+
+# BUBBLE: Many adjacent swaps
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):                          # 1. Outer: n-1 ITERATIONS (passes)
+        for j in range(n-i-1):                    # 2. Inner: (n-1-i) = comparisons in pass i
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # Adjacent swap
+
+# SELECTION: 1 swap per pass  ////  Q: "Implement Selection Sort"  IS INTERVIEW QUESTION
+
+
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n-1):                          # 1. Outer: n-1 ITERATIONS (passes)
+        min_idx = i
+        for j in range(i+1, n):                   # Scan unsorted part
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]  # 1 swap per pass
+
+# TEST
+arr = [99,88,77,66,55]
+bubble_sort(arr.copy())
+print("Bubble:", arr)   # [55,66,77,88,99]
+selection_sort(arr.copy())
+print("Selection:", arr)  # [55,66,77,88,99]
+
+# KEY: Both ascending BUT different logic!
