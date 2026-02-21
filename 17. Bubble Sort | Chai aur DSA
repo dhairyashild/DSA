@@ -1,5 +1,5 @@
-1. Outer: range(n-1)     # n-1 passes needed
-2. Inner: range(n-i-1)   # Skip sorted suffix  
+1. Outer: range(n-1)     # YES - range(n-1) = n-1 ITERATIONS (passes) -- IF THERE ARE 5 NUMBERS THEN 4 ITEARTION NEED MEANS 4 TIMES SWAP NEED
+2. Inner: range(n-i-1)   # (n-1-i) = Number of comparisons needed in pass i 
 3. Compare adjacent: if arr[j] > arr[j+1] → SWAP
 ######################          BUBLE-SORT CLASS         ###################################################
 
