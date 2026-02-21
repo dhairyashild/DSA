@@ -22,9 +22,8 @@ arr = array('i', [1,2,3,4,5,6])  # Integer array
 # 3. BASIC OPS
 print(arr)               # array('i', [1,2,3,4,5,6])    === array('typecode', [data])
 print(len(arr))          # 6
-print(arr.typecode)      # 'i'
+print(arr.typecode)      # 'i'                                A= 10                    print(type(A))         
 print(arr[0])            # 1             
-
 
 
 # 4. PRINTING LOOPS
@@ -36,14 +35,41 @@ for x in arr: print(x, end=', ')                     # Enhanced: 1, 2, 200, 4, 5
 
 
 # 5. MODIFY (Insert/Append/Update)
-arr.append(100)          # [1,50,2,200,4,5,6,100] (end)        vs     arr.pop()                # Remove last → [100,6,5,4,200,2,50]
-arr.insert(1, 50)        # [1,50,2,200,4,5,6] (shifts right)
-arr[2] = 200             # Update/override
-arr.reverse()            # [100,6,5,4,200,2,50,1]
+# MUST-KNOW Array/List Methods (Git Notes) 🚀
 
-# 6. DELETE (Pop)
-arr.pop()                # Remove last → [100,6,5,4,200,2,50]
-arr.pop(2)               # Remove index 2 → [100,6,4,200,2,50]
+arr = [1, 2, 200, 4, 5, 6]
+
+# ADD ✅
+arr.append(100)        # [1,2,200,4,5,6,100] - END
+arr.insert(1, 50)      # [1,50,2,200,4,5,6]  - INDEX 1
+
+# UPDATE ✅
+arr[2] = 200           # Override index 2
+
+# DELETE ✅
+arr.pop()              # Remove LAST → [1,50,2,200,4,5]
+arr.pop(2)             # Remove INDEX 2
+arr.remove(50)         # Remove FIRST 50 → [1,2,200,4,5]
+
+# COPY ✅
+copy_arr = arr.copy()  # Independent copy (not arr[:])
+new_arr = arr[:]       # Also works!
+
+# REVERSE ✅
+arr.reverse()          # [5,4,200,2,1]
+
+# COUNT ✅
+arr.count(2)           # How many 2's? → 1
+
+# INDEX ✅
+arr.index(200)         # First 200 at index? → 2
+
+# EXTEND ✅
+arr.extend([10,20])    # Add MULTIPLE → [5,4,200,2,1,10,20]
+
+# CLEAR ✅
+arr.clear()            # [] - Empty!
+
 
 # 7. COPY NEW ARRAY (with ops!)
 copy_arr = array(arr.typecode, [x*3 for x in arr])  # New array, tripled      if u dont want trippeled arraynremove *3 so same array copied
