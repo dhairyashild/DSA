@@ -1,0 +1,162 @@
+# Stack: Step-by-Step Correct Implementation (Git-Ready Notes) 🚀
+# LIFO: Last In, First Out | List: append/pop = O(1)
+
+## STEP 1: Basic Class + Push/Pop
+class Stack:
+    def __init__(self):        # Initialize empty stack
+        self.items = []        # Use list as internal storage
+    
+    def push(self, item):      # Add to TOP
+        self.items.append(item)
+    
+    def pop(self):             # Remove/return TOP
+        if self.items:
+            return self.items.pop()
+        return None  # Empty stack
+
+## STEP 2: Add Helper Methods
+    def peek(self):            # View TOP (no remove)
+        if self.items:
+            return self.items[-1]
+        return None
+    
+    def isEmpty(self):         # Check empty?
+        return len(self.items) == 0
+    
+    def size(self):            # Count items
+        return len(self.items)
+
+## STEP 3: Test It!
+s = Stack()
+print("Empty?", s.isEmpty())   # True
+
+s.push(10); s.push(20); s.push(30)  # Stack: [10,20,30]
+print("Size:", s.size())           # 3
+print("Top:", s.peek())            # 30
+print("Pop:", s.pop())             # 30
+print("Now top:", s.peek())        # 20
+
+print("Empty?", s.isEmpty())       # False
+
+# OUTPUT:
+# Empty? True
+# Size: 3
+# Top: 30
+# Pop: 30
+# Now top: 20
+# Empty? False
+
+## STEP 4: Git Commands
+# git init; git add stack.py; git commit -m "Stack DSA"; git push
+
+
+
+
+-----------------------------------------------------------------------------------------------
+
+# INTERVIEW Q ON STACK 
+
+
+# STACK: LIFO | O(1) push/pop | List: append/pop() 🚀
+class Stack:
+    def __init__(self): self.items = []
+    def push(self, x): self.items.append(x)
+    def pop(self): return self.items.pop() if self.items else None
+    def peek(self): return self.items[-1] if self.items else None
+    def isEmpty(self): return not self.items
+    def size(self): return len(self.items)
+
+# === TOP 5 INTERVIEW QUESTIONS ===
+# 1. VALID PARENTHESES (LeetCode 20) - 80% interviews
+def isValid(s):  # ()[]{}
+    stack = Stack()
+    pairs = {')':'(', '}':'{', ']':'['}
+    for c in s:
+        if c in pairs:  # Closing?
+            if stack.isEmpty() or stack.pop() != pairs[c]:
+                return False
+        else: stack.push(c)  # Opening → push
+    return stack.isEmpty()
+
+print(isValid("()[]{}"))  # True
+print(isValid("(]"))      # False
+
+# 2. NEXT GREATER ELEMENT (LeetCode 496)
+def nextGreater(nums):  # [2,1,2,4,3] → [4,2,4,-1,-1]
+    res = [-1] * len(nums)
+    stack = []  # Monotonic decreasing
+    for i in range(len(nums)):
+        while stack and nums[stack[-1]] < nums[i]:
+            res[stack.pop()] = nums[i]
+        stack.append(i)
+    return res
+
+# 3. MIN STACK (LeetCode 155) - O(1) min
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.minstack = []  # Track mins
+    
+    def push(self, x):
+        self.stack.append(x)
+        if not self.minstack or x <= self.minstack[-1]:
+            self.minstack.append(x)
+    
+    def pop(self): 
+        if self.stack.pop() == self.minstack[-1]:
+            self.minstack.pop()
+    
+    def getMin(self): return self.minstack[-1]
+
+# 4. REVERSE STACK (Iterative/Recursive)
+def reverseStack(s):  # 1→2→3 → 3→2→1
+    temp = Stack()
+    while not s.isEmpty():
+        temp.push(s.pop())
+    s.items = temp.items  # Swap
+
+# 5. DAILY TEMPS (LeetCode 739) - Monotonic Stack
+def dailyTemperatures(temps):  # [73,74,75,71,69] → [1,1,4,2,1]
+    res = [0] * len(temps)
+    stack = []
+    for i, t in enumerate(temps):
+        while stack and temps[stack[-1]] < t:
+            res[stack.pop()] = i - stack[-1] if stack else 0
+        stack.append(i)
+    return res
+
+# Git: git add stack_interview.py; git commit -m "Stack + 5 Qs"; git push
+
+
+-------------------------------------------
+##### my codebasics ans 
+
+class Stack():
+    def __init__(self):
+        self.lst= []
+
+    def push(self,a):
+        self.lst.append(a)
+
+    def peek_last(self):
+        if self.lst == 0:
+            print("lst empty")
+        else:
+            print(self.lst[-1])
+
+    def pop(self):
+        return lst.pop()
+        
+
+    def revrse_string(self,a):
+        self.lst.append(a)
+        rev=""
+        for i in range((len(a)-1),-1,-1):                        # give : here instead of , to separate rannge           #  forget  giving    in
+            rev=rev+a[i]
+        print(rev)
+    
+o=Stack()
+--------------------------------------------------
+
+o.revrse_string("abcdefg")
+        
