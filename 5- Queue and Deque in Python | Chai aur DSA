@@ -1,3 +1,5 @@
-QUEUE  == FIFO
+QUEUE  == FIFO   -- 1st came for movie ticket get out 1st from line
 
 1st deleted           +   last  inserted
+
+
