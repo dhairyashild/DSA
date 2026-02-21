@@ -1,0 +1,48 @@
+1. Outer: range(n-1)     # n-1 passes needed
+2. Inner: range(n-i-1)   # Skip sorted suffix  
+3. Compare adjacent: if arr[j] > arr[j+1] → SWAP
+######################          BUBLE-SORT CLASS         ###################################################
+
+
+
+class Sort():
+    def __init__(self, lst):
+        self.lst= lst
+        self.n=len(lst)
+
+    def sorting(self):
+        for i in range(0,self.n-1):
+            for j in range(self.n-1-i):
+                if self.lst[j+1]<self.lst[j]:
+                     self.lst[j],self.lst[j+1]=self.lst[j+1],self.lst[j]
+
+a=Sort([99,88,77,66,55])
+a.sorting()
+print(a.lst)  # [55, 66, 77, 88, 99] ✅
+                
+###########################       BUBBLE SORT FUNCTION ONLY USE THIS INSTEAD OF CLASS                  ##############################################
+
+
+# BUBBLE SORT FUNCTION - Python (Interview Ready) 🚀
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):              # n-1 passes
+        for j in range(n-i-1):        # Skip sorted part
+            if arr[j] > arr[j+1]:     # Compare adjacent
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # Swap
+    return arr
+
+# TEST
+a = [99, 88, 77, 66, 55]
+bubble_sort(a)
+print(a)  # [55, 66, 77, 88, 99]
+
+# Time: O(n²) | Space: O(1)
+    
+
+
+
+
+
+
