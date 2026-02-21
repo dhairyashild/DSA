@@ -1,0 +1,22 @@
+# BEST_PRACTICES_CLASS - Git Notes 🚀
+
+## CLASS TEMPLATE (Copy Every Time!)  ```python
+
+
+class ClassName():                    # 1. JUST 1ST CHARACTER IN CAPITAL 
+    """One line purpose."""        # 2. Docstring
+    
+    def __init__(self, param):      # 3. self, 1 SPACE param     =  AFTER COMMA 1 SPACE THEN ONLY PARAMETER/ATRIBUTES GIVEN
+        self.param = param          # 4. self.XXX = XXX (user input)
+    
+    def method(self):               # 5. EVERY method: self first!
+        return self.param           # 6. Use self.XXX everywhere
+
+
+
+
+❌ def __init__(self,lst)     →  ✅ def __init__(self, lst)
+❌ n = len(lst)              →  ✅ self.n = len(lst) 
+❌ def method()              →  ✅ def method(self)
+❌ lst[j]                    →  ✅ self.lst[j]
+❌ range(n)                  →  ✅ range(self.n)
