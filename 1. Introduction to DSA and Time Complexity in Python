@@ -3,7 +3,7 @@
 # =====================================================
 
 
-- Big O Notation==== Measures how TIME/SPACE grows as input size (n) increases.          -"O" means Order of growth.
+- TIME COMPLEXITY =Big O Notation==== Measures how TIME/SPACE grows as input size (n) increases.          -"O" means Order of growth.
 - RULES FOR BIG O ==
 time = 5n² + 3n + 20
 1. Keep FASTEST growing: n² (dominates for large n)
@@ -12,9 +12,9 @@ time = 5n² + 3n + 20
 
 Result: O(n²)
 
-
-
-
+-Repeatedly dividing N by 10 (while N > 0) gives O(log₁₀ N) iterations.--
+THEN ITS TIME COMPLEXITY = O(LOG10(N))        = ORDEROF(LOG10(NUMBER TO WHICH WE DIVIDED AT START)
+- IF WE DIVIDE BY 2 THEN  TIME COMPLE  =  O (LOG 2 (N))
 
 
 
