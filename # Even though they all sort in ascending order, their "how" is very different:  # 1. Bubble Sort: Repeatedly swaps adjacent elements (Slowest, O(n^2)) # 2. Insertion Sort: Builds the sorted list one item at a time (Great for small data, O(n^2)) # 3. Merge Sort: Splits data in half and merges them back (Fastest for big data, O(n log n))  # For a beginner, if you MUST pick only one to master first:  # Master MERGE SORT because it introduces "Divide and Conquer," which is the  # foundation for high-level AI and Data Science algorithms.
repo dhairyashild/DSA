@@ -1,0 +1,41 @@
+# Even though they all sort in ascending order, their "how" is very different:
+
+# 1. Bubble Sort: Repeatedly swaps adjacent elements (Slowest, O(n^2))
+# 2. Insertion Sort: Builds the sorted list one item at a time (Great for small data, O(n^2))
+# 3. Merge Sort: Splits data in half and merges them back (Fastest for big data, O(n log n))
+
+# For a beginner, if you MUST pick only one to master first: 
+# Master MERGE SORT because it introduces "Divide and Conquer," which is the 
+# foundation for high-level AI and Data Science algorithms.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
