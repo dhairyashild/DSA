@@ -7,8 +7,23 @@ Recursion = Function calls itself to solve smaller version of same problem, unti
 
 
 
+##########    DSA Python Course 2025 - Introduction to Recursion Concept - Part 12 [Hindi] | Code & Debug  ----- codemand debgu channel notes on recursion      #########################
 
+IF U CREATE FUNCTION CALL GREETING AND WRITE IT IN SAME FUNCTION THEN STACK GETS FULL
 
+def GREETING():
+    print("greet""
+    GREETING()             ------ THIS CAUSES UNLIMITED LOOP  SO STACK GETS FULL IN ALL OTHER LANG BUT PYTHON STOP LOOPS ON 987 TIME
+
+GREETING
+GREETING
+GREETING
+GREETING
+GREETING
+GREETING
+GREETING
+
+ STACK
 
 
 
