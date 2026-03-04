@@ -1,3 +1,18 @@
+
+
+# Singly Linked List (SLL) - 8 Interview Points
+
+1. Definition: Chain of nodes, each has `data + next` pointer, unidirectional.
+2. Head: First node reference           3. Tail: Last node, `next=None` (end marker).
+4. Non-contiguous: Nodes anywhere in memory, linked by pointers.
+5. O(1) insert/delete at head/tail (if tail ptr exists).
+6. O(n) access by index (must traverse from head).
+7. Dynamic size: Grow/shrink without reallocation.
+8. Use cases: Stack/queue impl, undo history, sparse arrays.
+
+
+
+
 # =====================================================
 # LINKED LIST - COMPLETE INTERVIEW GUIDE (Q&A + CODE)
 # =====================================================
