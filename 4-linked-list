@@ -1,5 +1,3 @@
-
-
 # Singly Linked List (SLL) - 8 Interview Points
 
 1. Definition: Chain of nodes, each has `data + next` pointer, unidirectional.
@@ -57,7 +55,9 @@ class LinkedList:
         print("END OF TRACK")
 
 # TEST
-train = LinkedList()
+train = LinkedList()    #   You must assign the class to a variable (e.g. train = link_list()) to create a "living" object; otherwise, calling link_list() repeatedly just creates new, empty trains that disappear instantly.
+
+
 train.add_front(10) # [10] → END
 train.add_back(20)  # [10] → [20] → END
 train.add_front(0)  # [0] → [10] → [20] → END
