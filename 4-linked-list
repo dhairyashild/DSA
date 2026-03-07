@@ -23,16 +23,20 @@
 # =====================================================
 class Node:
     def __init__(self, data): 
-        self.data = data    # [PASSENGERS] Sitting inside the carriage
-        self.next = None    # [HOOK] Rear coupling currently holding nothing
+        self.data = data    # [PASSENGERS= data] Sitting inside the carriage
+        self.next = None    # [HOOK ON BOTH SIDE OF TRAIN] Rear coupling currently holding nothing
 
 class LinkedList:
     def __init__(self): 
-        self.head = None    # [DRIVER] Looking for the first carriage
+        self.head = None   
+# DECLARE WHO IS HEAD TRAIN WITH ENGINE HERE NONE MEANS = NO TRAIN , 
+# IF NO TRAIN THEN WHY NEED THAT CODE THERE---> 
+1. CHECK IF EMPTY  2. FIRST node will attach when added  3. EVERY list needs a "head pointer" - even empty ones
+
 
     def add_front(self, value):
         t1 = Node(value)    # NEW CARRIAGE: Just arrived at the platform
-        t1.next = self.head # HOOKING: New car's back snaps to current front car
+        t1.next = self.head # next= HOOK ON BOTH SIDE OF T1 CONSIDER 
         self.head = t1      # NEW DRIVER SEAT: Driver moves to the new front car
 
     def add_back(self, value):
