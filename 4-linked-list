@@ -18,6 +18,24 @@
 #    the back of the train to find where to hook new carriages.
 # 6. NULL/NONE: The "End of the Track." Where no more carriages exist.
 
+
+-------------------------------------------------------------------------------------------------
+# CHECH CYCLE IN LINK LIST
+def has_cycle(self):
+    slow = self.head
+    fast = self.head
+    
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:  # Same memory address = cycle!
+            return True
+    return False
+
+# TEST: [10→20→30→20] (30 points back to 20 = cycle)
+# slow=20, fast=20 → MEET → True
+
+
 # =====================================================
 # LINKED LIST - COMPLETE INTERVIEW GUIDE (Q&A + CODE)
 # =====================================================
@@ -78,105 +96,146 @@ class Node:
         self.next = None    # [HOOK] rear coupling
 
 # =====================================================
-# Q1: CREATE + PRINT ✓
-# Analogy: Ticket collector walking to the end of the track.
+# Q1: CREATE + PRINT ✓ (MOST IMPORTANT - Always asked first!)
+# Ticket collector walks from Engine to end of track
 # =====================================================
 def create_print(head):
-    temp = head # Collector starts at the Engine
+    temp = head
     while temp: 
         print(temp.data, end="→")
-        temp = temp.next # Step to the next carriage
+        temp = temp.next
     print("None")
 
 # =====================================================
-# Q2-3: INSERT HEAD/END ✓
-# Analogy Head: Cutting in line at the very front.
-# Analogy End: Walking to the last car to add a new one.
+# Q2: INSERT HEAD ✓ (HIGH PRIORITY - Easy first question)  
+# Cut new car in front of Engine
 # =====================================================
 def insert_head(head, data):
     t1 = Node(data)
-    t1.next = head # Hook new car to the old first car
-    return t1      # New car is now the start
+    t1.next = head
+    return t1
 
+# =====================================================
+# Q3: INSERT END ✓ (HIGH PRIORITY - Common follow-up)
+# Walk to last car, snap new car to empty hook
+# =====================================================
 def insert_end(head, data):
     t1 = Node(data)
     if not head: return t1
     temp = head
-    while temp.next: temp = temp.next # Find the car with an empty hook
-    temp.next = t1 # Snap the hook onto the new car
+    while temp.next: temp = temp.next
+    temp.next = t1
     return head
 
 # =====================================================
-# Q4: INSERT POS k ✓
-# Analogy: Unhooking the train at a specific point to slide a car in.
+# Q4: INSERT POS k ✓ (MEDIUM - Tests loops + edge cases)
+# Unhook at position k, slide new car in gap
 # =====================================================
 def insert_pos(head, pos, data):
     t1 = Node(data)
     if pos == 0: return insert_head(head, data)
     temp = head
-    for i in range(pos-1): # Walk to the car BEFORE the gap
+    for i in range(pos-1):
         if temp.next: temp = temp.next
         else: return head
-    t1.next = temp.next # New car hooks to the back half
-    temp.next = t1      # Front half hooks to the new car
+    t1.next = temp.next
+    temp.next = t1
     return head
 
 # =====================================================
-# Q5: DELETE VALUE ✓
-# Analogy: Skipping over a broken carriage.
+# Q5: DELETE VALUE ✓ (MEDIUM-HIGH - Tests prev/next logic)
+# Skip broken carriage by linking neighbors
 # =====================================================
 def delete_val(head, data):
     if head and head.data == data: return head.next
     temp = head
     while temp and temp.next:
         if temp.next.data == data:
-            temp.next = temp.next.next # Unhook the target, link neighbors
+            temp.next = temp.next.next
             return head
         temp = temp.next
     return head
 
 # =====================================================
-# Q6: REVERSE ✓
-# Analogy: Walking through the train and flipping every hook backward.
-# =====================================================
-def reverse(head):
-    prev, curr = None, head
-    while curr:
-        t1 = curr.next     # Remember the next car
-        curr.next = prev   # Flip the hook backward
-        prev = curr        # Move markers forward
-        curr = t1
-    return prev # The old last car is now the Engine
-
-# =====================================================
-# Q7-8: MIDDLE + CYCLE ✓
-# Analogy: One person walks (Slow), one person runs (Fast).
-# =====================================================
-def middle(head):
-    slow, fast = head, head
-    while fast and fast.next:
-        slow = slow.next; fast = fast.next.next
-    return slow.data # Slow is at the center of the train
-
-def has_cycle(head):
-    slow, fast = head, head
-    while fast and fast.next:
-        slow = slow.next; fast = fast.next.next
-        if slow == fast: return True # They met! The track is a loop.
-    return False
-
-# =====================================================
-# Q9: REMOVE Nth END ✓
-# Analogy: Using a "measuring tape" (gap) to find the Nth car from back.
+# Q9: REMOVE Nth END ✓ (HIGH - Two pointer favorite!)
+# Measuring tape trick: Gap = n nodes
 # =====================================================
 def remove_nth_end(head, n):
     dummy = Node(0); dummy.next = head
     left, right = dummy, head
-    for i in range(n): right = right.next # Gap created
+    for i in range(n): right = right.next
     while right:
         left, right = left.next, right.next
-    left.next = left.next.next # Delete the targeted car
+    left.next = left.next.next
     return dummy.next
+
+# =====================================================
+# Q6: REVERSE ✓ (MEDIUM - Pointer reversal mastery)
+# Flip every hook backward as you walk
+# =====================================================
+def reverse(head):
+    prev, curr = None, head
+    while curr:
+        t1 = curr.next
+        curr.next = prev
+        prev = curr
+        curr = t1
+    return prev
+
+# =====================================================
+# Q7: MIDDLE ✓ (MEDIUM - Two pointer classic)
+# Slow tortoise vs Fast hare race
+# =====================================================
+def middle(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow.data
+
+# GET MIDDLE LINK
+def find_middle(self):
+    if not self.head: return None
+    
+    slow = self.head     # slow=10
+    fast = self.head     # fast=10
+    
+    # WHILE: 10 and 20 → fast.next=20(True), fast.next.next=30(True)
+    while fast.next and fast.next.next:
+        slow = slow.next      # slow=20  
+        fast = fast.next.next # fast=30
+        
+        # NEXT LOOP: fast.next=40(True), fast.next.next=50(True)  
+        # slow=30, fast=50 → STOP (fast.next.next=None)
+    
+    return slow.data  # Returns 30 ✓
+# =====================================================
+# Q8: CYCLE ✓ (MEDIUM - Floyd's algorithm)
+# Hare catches tortoise in loop
+# =====================================================
+def has_cycle(head):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast: return True
+    return False
+
+# CODE WITH CLASS- BOTH CAN BE USED
+def has_cycle(self):
+    slow = self.head
+    fast = self.head
+    
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:  # Same memory address = cycle!
+            return True
+    return False
+
+# TEST: [10→20→30→20] (30 points back to 20 = cycle)
+# slow=20, fast=20 → MEET → True
+------------------------------------------------------------------------------------------------
 
 # TEST ALL:
 head = Node(10); head.next = Node(20); head.next.next = Node(30)
