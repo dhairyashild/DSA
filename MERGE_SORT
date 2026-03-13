@@ -1,0 +1,42 @@
+https://www.youtube.com/watch?v=iqB9rPR3mTA
+
+Merge Sort Code | DSA using Python | हिंदी में | MySirG
+
+
+
+def merge_sort(list1):
+    if len(list1) > 1:
+        # Step 1: Divide list into two halves
+        mid = len(list1) // 2
+        leftlist = list1[:mid]
+        rightlist = list1[mid:]
+
+        # Step 2: Conquer (Recursive calls to split further)
+        merge_sort(leftlist)
+        merge_sort(rightlist)
+
+        # Step 3: Compare & Combine
+        i = j = k = 0
+        while i < len(leftlist) and j < len(rightlist):
+            if leftlist[i] < rightlist[j]: #### CHANGE '<' TO '>' FOR DESCENDING
+                list1[k] = leftlist[i]
+                i += 1
+            else:
+                list1[k] = rightlist[j]
+                j += 1
+            k += 1
+
+        # Step 4: Cleanup (Add remaining elements)
+        while i < len(leftlist):
+            list1[k] = leftlist[i]
+            i += 1
+            k += 1
+        while j < len(rightlist):
+            list1[k] = rightlist[j]
+            j += 1
+            k += 1
+
+# Example
+mylist = [75, 29, 83, 42, 16, 90, 56, 34, 20, 51]
+merge_sort(mylist)
+print("Sorted:", mylist)
