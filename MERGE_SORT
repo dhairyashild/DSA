@@ -26,7 +26,7 @@ def merge_sort(list1):
                 j += 1
             k += 1
 
-        # Step 4: Cleanup (Add remaining elements)
+        # Step 4: Cleanup (Add remaining 1 element which is extra in LEFTLIST/RIGHTLIST list if list1 is oddlike 7 so left has 3 and right has 4 so above step compare 3 in left to 3 in right but last 4 in right left that added by below code )
         while i < len(leftlist):
             list1[k] = leftlist[i]
             i += 1
