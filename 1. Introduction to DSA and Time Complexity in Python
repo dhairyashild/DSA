@@ -1,3 +1,135 @@
+
+
+
+SIMPLE 1-LINE RULES TO IDENTIFY TIME COMPLEXITY FROM CODE
+==========================================================
+
+
+# O(1) - No loops, just math/index/assign
+x = a[5] + b[10]
+
+# O(log n) - Loop where variable multiplies or divides (i*=2, i//=2, i=i*3)
+while i < n: i *= 2
+
+# O(n) - Single loop from 0 to n (or list iteration)
+for i in range(n): print(i)
+
+# O(n log n) - Sorting or divide & conquer like merge sort
+arr.sort()
+
+# O(n²) - Two nested loops both going to n
+for i in range(n): 
+    for j in range(n): print(i,j)
+
+# O(n³) - Three nested loops
+for i in range(n):
+    for j in range(n):
+        for k in range(n): print(i,j,k)
+
+# O(2ⁿ) - Recursion with 2 or more calls per level
+def f(n): return f(n-1) + f(n-2)
+
+# O(n × m) - Two loops with different arrays
+for i in arr1:
+    for j in arr2: print(i,j)
+
+# O(n + m) - Two separate loops (not nested)
+for i in arr1: print(i)
+for j in arr2: print(j)
+
+# O(√n) - Loop runs until i*i <= n
+while i*i <= n: i += 1
+
+# O(n/2) - Still O(n), ignore constants
+for i in range(n//2): print(i)
+
+# QUICK CHECK (READ LEFT TO RIGHT):
+# No loop? → O(1)
+# Loop halves/doubles? → O(log n)
+# Single loop? → O(n)
+# Sort? → O(n log n)
+# 2 nested loops? → O(n²)
+# 3 nested loops? → O(n³)
+# Recursion with 2 calls? → O(2ⁿ)
+------------------------
+----------------------------
+1) Q: What is time complexity? Why is it important?
+   A: How runtime grows with input size n; used to compare and choose efficient algorithms.
+
+2) Q: Explain Big-O notation in simple words.
+   A:describes the worst-case running time of algorithm as input size grows, ignoring constants& smaller terms.
+# "Big-O = Worst case of time run on algo + Ignore constants 
+
+3) Q: What are the common time complexities you should know?   ###########################
+O(1) constant,  
+O(n) linear,
+O(n log n) linearithmic, 
+O(log n) logarithmic,
+O(n^2) quadratic,
+O(2^n), O(n!) exponential.
+
+4) Q: Time complexity of accessing arr[i] in Python list?  
+   A: O(1) – direct index access in dynamic array.              ######## ACCESS + APPEND LIST= CONSTANT
+7) Q: Time complexity of list.append(x)?
+   A: Amortized O(1) – mostly constant, occasional resize.
+
+5) Q: Time complexity of searching in unsorted list with loop?
+   A: O(n) – may scan every element in worst case.
+8) Q: Time complexity of list.insert(0, x)?
+   A: O(n) – shifts all existing elements right.
+
+6) Q: Time complexity of binary search on sorted list?
+   A: O(log n) – halves search space each step.               ##### BINARY/ HALVES /BALANCED BST = LOG 
+16) Q: Balanced BST search/insert/delete complexity?
+    A: O(log n) – tree height is logarithmic.
+12) Q: Time complexity of:
+        i = 1
+        while i <= n:
+            i = i * 2
+    A: O(log n) – i doubles, ~log₂(n) iterations.
+
+9) Q: Time complexity of x in set / key in dict?
+   A: Average O(1), worst O(n) due to hash collisions.
+
+10) Q: Time complexity of iterating all elements of a list?
+    A: O(n) – visit each element once.
+
+
+
+
+13) Q: Time complexity of merging sorted arrays of sizes n and m?
+    A: O(n + m) – process each element at most once.                   #####################
+
+14) Q: Time complexity of linear vs binary search?
+    A: Linear: O(n); Binary: O(log n) on sorted data.           #######################################
+
+15) Q: Average time complexity of quicksort and mergesort?
+    A: Both O(n log n); quicksort worst O(n^2), mergesort worst O(n log n).    #########################
+
+
+
+17) Q: Unbalanced (skewed) BST worst-case search?
+    A: O(n) – behaves like a linked list.
+
+18) Q: Time complexity of summing all elements in list of size n?
+    A: O(n) – must visit every element.
+
+19) Q: How does recursion affect time complexity?
+    A: Depends on calls per level and depth; e.g., 2 calls each level to depth n → O(2^n).   ##########
+
+20) Q: Difference between time complexity and space complexity?
+    A: Time: growth of runtime; Space: growth of extra memory used.
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
 # =====================================================
 # TIME COMPLEXITY - CODEBASICS VID 2 NOTES
 # =====================================================
