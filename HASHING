@@ -1,0 +1,33 @@
+Hashing== Its technique of map KEYS AND VALUES into the HASH-TABLE by using a HASH-FUNCTION
+                                K        V             (DATA-TYPE)              (RULE)
+
+#  Key Terms
+Hash Table== It is the Data structure used to store elements
+Hash function==It is a Function to map (Hash) Key-values to the memory addnis
+Hashing==It is a method for storing and retrieving records from a database
+
+- Hashing:
+  Map large-range keys(e.g., 5‑digit roll numbers 10000–99999)into smaller fixed-size table(e.g 0–99).
+- Hashing maps large keys (like 5‑digit roll numbers) into a small table.
+- Hash function: HF(key) = key % 100 → slot 0–99.
+- Different keys can get same slot → collision.
+- Collisions must be handled (e.g., chaining / probing).
+
+Hash Function
+- A hash function creates  mapping between  key and index(slot number in the hash table NOT WITH VALUE) 
+  in hash table using a mathematical formula.
+- Various hash functions are used for this purpose.
+
+Common Hash Function Methods
+- Simple mod function
+- Division method
+- Binning
+- Mid-square method
+
+Collision Resolution
+- Two types of resolution:
+  1) Open hashing (chaining): If two keys go to the same place, we keep them in a small list there.
+
+  2) Closed hashing (open addressing): 
+                             If a place is full, we move ahead in the table to find the next empty spot.
+
