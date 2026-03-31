@@ -31,3 +31,46 @@ Collision Resolution
   2) Closed hashing (open addressing): 
                              If a place is full, we move ahead in the table to find the next empty spot.
 
+
+-------------------------------------------------------------
+def two_sum(nums, target):
+    """
+    Finds two indices such that their values add up to the target.
+    Uses a hash map (dictionary) for O(n) time complexity.
+    """
+    hash_map = {}  # value : index
+    
+    for i, num in enumerate(nums):
+        need = target - num
+        
+        if need in hash_map:
+            return [hash_map[need], i]
+        
+        hash_map[num] = i
+        
+    return None
+
+# Example Usage:
+# nums = [2, 7, 11, 15], target = 9
+# Output: [0, 1]
+
+
+# 1st Iteration= ACTION: Store 0 at key 2
+hash_map[2] = 0  #  hash_map[num] = i
+print(hash_map[2]) # O/P: 0
+print(hash_map)    # O/P: {2: 0}
+-----------------------------------------
+# contains duplicate
+
+nums=[1,0,1,1]
+
+def containsNearbyDuplicate(nums, k):
+    indices = {}  # HashMap: num → LAST seen index
+    
+    for ind, val in enumerate(nums):  # val वापरतो
+        if val in indices and ind - indices[val] <= k:  # val वापरतो
+            return True
+        indices[val] = ind  # val वापरतो
+    
+    return False
+-------------------------------------------
