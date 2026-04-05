@@ -46,7 +46,7 @@ def two_sum(nums, target):
         if need in hash_map:
             return [hash_map[need], i]
         
-        hash_map[num] = i
+        hash_map[num] = i                # hash_map[KEY] = VALUE STORED IN DICT LIKE {num : i,}
         
     return None
 
