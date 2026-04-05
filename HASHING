@@ -44,7 +44,7 @@ def two_sum(nums, target):
         need = target - num
         
         if need in hash_map:
-            return [hash_map[need], i]
+            return [hash_map[need], i]  # hash_map ={ "need": 5 }  # key "need" -> value 5 gives as O/P HERE
         
         hash_map[num] = i                # hash_map[KEY] = VALUE STORED IN DICT LIKE {num : i,}
         
