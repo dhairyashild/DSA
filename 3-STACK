@@ -127,7 +127,44 @@ def dailyTemperatures(temps):  # [73,74,75,71,69] → [1,1,4,2,1]
 
 # Git: git add stack_interview.py; git commit -m "Stack + 5 Qs"; git push
 
+# temp = [73, 74, 75, 71, 69]
+# सुरुवातीला: ans = [0, 0, 0, 0, 0], stack = []
 
+# Iteration i = 4 (temp[4] = 69)
+# while stack... (False, stack रिकामा आहे)
+# if stack... (False)
+stack.append(4)                         # stack = [4]
+# ans: [0, 0, 0, 0, 0]
+
+# Iteration i = 3 (temp[3] = 71)
+while stack and 71 >= temp[stack[-1]] (69): # True
+    stack.pop()                         # stack = [] (६९ हे ७१ पेक्षा लहान आहे)
+# if stack... (False)
+stack.append(3)                         # stack = [3]
+# ans: [0, 0, 0, 0, 0]
+
+# Iteration i = 2 (temp[2] = 75)
+while stack and 75 >= temp[stack[-1]] (71): # True
+    stack.pop()                         # stack = [] (७१ हे ७५ पेक्षा लहान आहे)
+# if stack... (False)
+stack.append(2)                         # stack = [2]
+# ans: [0, 0, 0, 0, 0]
+
+# Iteration i = 1 (temp[1] = 74)
+# while stack and 74 >= temp[stack[-1]] (75): # False (७५ हे ७४ पेक्षा मोठे आहे)
+if stack:                               # True
+    ans[1] = stack[-1] - 1              # ans[1] = 2 - 1 = 1
+stack.append(1)                         # stack = [2, 1]
+# ans: [0, 1, 0, 0, 0]
+
+# Iteration i = 0 (temp[0] = 73)
+# while stack and 73 >= temp[stack[-1]] (74): # False (७४ हे ७३ पेक्षा मोठे आहे)
+if stack:                               # True
+    ans[0] = stack[-1] - 0              # ans[0] = 1 - 0 = 1
+stack.append(0)                         # stack = [2, 1, 0]
+# ans: [1, 1, 0, 0, 0]
+
+# Final Result: [1, 1, 0, 0, 0]
 -------------------------------------------
 ##### my codebasics ans 
 
