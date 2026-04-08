@@ -93,20 +93,22 @@ def nextGreater(nums):  # [2,1,2,4,3] → [4,2,4,-1,-1]
 
 # 3. MIN STACK (LeetCode 155) - O(1) min
 class MinStack:
-    def __init__(self):
-        self.stack = []
-        self.minstack = []  # Track mins
-    
-    def push(self, x):
-        self.stack.append(x)
-        if not self.minstack or x <= self.minstack[-1]:
-            self.minstack.append(x)
-    
-    def pop(self): 
-        if self.stack.pop() == self.minstack[-1]:      # self.stack.pop() ही पद्धत मुख्य स्टॅकमधून सर्वात वरची व्हॅल्यू काढून टाकते आणि ती व्हॅल्यू रिटर्न देखील करते.
-            self.minstack.pop()                       # जर मुख्य स्टॅकमधून काढलेली व्हॅल्यू ही सध्याची सर्वात लहान व्हॅल्यू (self.minstack[-1]) असेल, तर ती minstack मधूनही काढावी लागते. जेणेकरून getMin() नेहमी अचूक लहान व्हॅल्यू दाखवेल.
-    
-    def getMin(self): return self.minstack[-1]
+    def __init__(self):
+        self.stack = []
+        self.minstack = []  # Track mins
+    
+    def push(self, x):
+        self.stack.append(x)
+        if self.minstack == [] or x <= self.minstack[-1]:
+            self.minstack.append(x)
+    
+    def pop(self): 
+        if self.stack.pop() == self.minstack[-1]:      # self.stack.pop() ही पद्धत मुख्य स्टॅकमधून सर्वात वरची व्हॅल्यू काढून टाकते आणि ती व्हॅल्यू रिटर्न देखील करते.
+            self.minstack.pop()                       # जर मुख्य स्टॅकमधून काढलेली व्हॅल्यू ही सध्याची सर्वात लहान व्हॅल्यू (self.minstack[-1]) असेल, तर ती minstack मधूनही काढावी लागते. जेणेकरून getMin() नेहमी अचूक लहान व्हॅल्यू दाखवेल.
+    
+    def getMin(self): return self.minstack[-1]
+
+add just above code chnage and keep all code as it is 
 
 # 4. REVERSE STACK (Iterative/Recursive)
 def reverseStack(s):  # 1→2→3 → 3→2→1
